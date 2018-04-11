@@ -46,7 +46,7 @@ class Worker():
         iter = 0
         for one in Person.select().order_by(Person.count_messages.desc()).limit(10):
             try:
-                _user = self._bot.get_chat_member(1257615874, one.user_id)
+                _user = self._bot.get_chat_member(-1001257615874, one.user_id)
                 name = "@" + _user.user.username if _user.user.username != None else _user.user.first_name
                 if iter == 0: 
                     stat += f"🥇{name} - {one.count_messages}\n"
@@ -71,7 +71,7 @@ class Worker():
             letter = "Вот и подошла к концу ещё одна неделя! И вот вам немного статистики:\n\n<i>Самые активные участники:</i>\n{}\nА всего было напечатано <b>{}</b> {}!\n\nУдачи в наступающей неделе!😉".format(stat, total, self.CurrentWord(str(total)))
         else:
             letter = "Чёт на этой неделе было тихо😔"
-        self._bot.send_message(1257615874, letter, parse_mode="HTML")
+        self._bot.send_message(-1001257615874, letter, parse_mode="HTML")
 
     def ClearDB(self, chat_id):
         persons = Person.select()

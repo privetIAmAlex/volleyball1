@@ -31,7 +31,7 @@ def handle_message(message):
         elif message.text == "✅Отправить✅":
             _worker.SendStat(message.from_user.id)
         return
-    if message.chat.id == 1257615874:
+    if message.chat.id == -1001257615874:
         _worker.Counter(message.from_user.id)
 
 bot.polling(none_stop=True)
